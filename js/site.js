@@ -1,10 +1,6 @@
 "use strict";
 
 $(document).ready(function () {
-	/* Video Lightbox */
-	if (!!$.prototype.simpleLightboxVideo) {
-		$('.video').simpleLightboxVideo();
-	}
 
 	/*ScrollUp*/
 	if (!!$.prototype.scrollUp) {
@@ -33,7 +29,10 @@ $(document).ready(function () {
 
 	/* Sticky Navigation */
 	if (!!$.prototype.stickyNavbar) {
-		$('#header').stickyNavbar();
+		$('#header').stickyNavbar({
+			startAt: 0,
+			sectionSelector: "scrollto"
+		});
 	}
 
 	$('#content').waypoint(function (direction) {
@@ -72,4 +71,12 @@ $('#gallery').featherlightGallery({
 		this.$legend = this.$legend || $('<div class="legend"/>').insertAfter(this.$content);
 		this.$legend.text(this.$currentTarget.attr('alt'));
 	}
+});
+
+$('a.gallery').featherlightGallery({
+	previousIcon: '«',
+	nextIcon: '»',
+	galleryFadeIn: 300,
+
+	openSpeed: 300
 });
